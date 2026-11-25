@@ -23,6 +23,7 @@ function showToast(message) {
 const matchSelect = document.getElementById("match");
 const standSelect = document.getElementById("stand");
 const quantityInput = document.getElementById("quantity");
+const bookingForm = document.getElementById("booking-form");
 const bookingSection = document.getElementById("book-ticket");
 const summaryMatch = document.getElementById("summary-match");
 const summaryStand = document.getElementById("summary-stand");
@@ -36,7 +37,7 @@ const ticketPrices = {
     "match-03": { general: 1000, premium: 2500, vip: 5500 }
 };
 
-if (!matchSelect || !standSelect || !quantityInput || !bookingSection ||
+if (!matchSelect || !standSelect || !quantityInput || !bookingForm || !bookingSection ||
     !summaryMatch || !summaryStand || !summaryPrice || !summaryQuantity || !summaryTotal) {
     console.error("The booking form or summary elements are missing.");
 } else {
@@ -64,6 +65,11 @@ if (!matchSelect || !standSelect || !quantityInput || !bookingSection ||
     quantityInput.addEventListener("input", () => updateBookingSummary());
     quantityInput.addEventListener("change", () => updateBookingSummary(true));
     updateBookingSummary();
+
+    bookingForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        showToast("Booking form submitted successfully!");
+    });
 
     document.querySelectorAll(".book-btn").forEach((button) => {
         button.addEventListener("click", () => {
