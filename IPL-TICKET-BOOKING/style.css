@@ -199,7 +199,7 @@ tbody tr:hover {
     margin: 12px 0 5px;
 }
 
-#booking-form input,
+#booking-form input:not([type="checkbox"]),
 #booking-form select {
     width: 100%;
     padding: 12px;
@@ -225,6 +225,41 @@ tbody tr:hover {
 
 #booking-form button:hover {
     background: #111;
+}
+
+#booking-form .booking-preferences {
+    margin-top: 18px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#booking-form .booking-preferences legend {
+    padding: 0 6px;
+    font-weight: bold;
+}
+
+#booking-form .checkbox-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    font-weight: normal;
+}
+
+#booking-form .checkbox-option input {
+    width: auto;
+    margin: 0;
+}
+
+#booking-form .reset-button {
+    background: #555;
+}
+
+#booking-form .form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 /* SUMMARY CARD */

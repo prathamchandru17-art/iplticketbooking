@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book IPL 2026 match tickets">
+    <title>Book IPL 2026 Tickets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>IPL 2026 Ticket Booking</h1>
+        <nav aria-label="Main Navigation">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#matches">Matches</a></li>
+                <li><a href="booking.html" aria-current="page">Booking Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="book-ticket">
+            <h2>Book Your Tickets</h2>
+            <p>Complete the form below. Fields marked as required must be filled in before you can continue.</p>
+
+            <div class="booking-layout">
+                <form id="booking-form" action="#" method="post">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" autocomplete="name" minlength="2" maxlength="60" required>
+
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required>
+
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric"
+                        pattern="[0-9]{10}" minlength="10" maxlength="10"
+                        title="Enter a 10-digit phone number without spaces or dashes." required>
+
+                    <label for="match">Select Match:</label>
+                    <select id="match" name="match" required>
+                        <option value="">Choose a match</option>
+                        <option value="match-01">Match 01 - RCB vs MI, Wankhede Stadium</option>
+                        <option value="match-02">Match 02 - CSK vs KKR, Chidambaram Stadium</option>
+                        <option value="match-03">Match 03 - DC vs SRH, Arun Jaitley Stadium</option>
+                    </select>
+
+                    <label for="stand">Stand Category:</label>
+                    <select id="stand" name="stand" required>
+                        <option value="">Choose a stand</option>
+                        <option value="general">General</option>
+                        <option value="premium">Premium</option>
+                        <option value="vip">VIP</option>
+                    </select>
+
+                    <label for="quantity">Number of Tickets:</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="10" step="1" value="1" required>
+
+                    <fieldset class="booking-preferences">
+                        <legend>Booking Preferences</legend>
+                        <label class="checkbox-option" for="updates">
+                            <input type="checkbox" id="updates" name="updates" value="yes">
+                            Email me occasional ticket and match updates
+                        </label>
+                    </fieldset>
+
+                    <div class="form-actions">
+                        <button type="submit">Submit Booking</button>
+                        <button type="reset" class="reset-button">Reset Form</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 IPL Ticket Booking. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
