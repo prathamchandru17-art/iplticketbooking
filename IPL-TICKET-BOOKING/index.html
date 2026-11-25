@@ -14,18 +14,29 @@
 <body>
 
     <!-- Header -->
-    <header id="home">
-        <h1>IPL 2026 Ticket Booking</h1>
+    <header id="home" class="site-header">
+        <div class="header-inner">
+            <h1><a href="#home">IPL 2026 Ticket Booking</a></h1>
 
-        <nav aria-label="Main Navigation">
-            <ul>
-                <li><a href="#matches">Matches</a></li>
-                <li><a href="#book-ticket">Book Ticket</a></li>
-                <li><a href="booking.html">Booking Form</a></li>
-                <li><a href="#my-bookings">My Bookings</a></li>
-                <li><a href="#guidelines">Guidelines</a></li>
-            </ul>
-        </nav>
+            <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"
+                aria-controls="primary-navigation">
+                <span class="hamburger-icon" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+
+            <nav id="primary-navigation" class="site-nav" aria-label="Main Navigation">
+                <ul>
+                    <li><a href="#matches">Matches</a></li>
+                    <li><a href="#book-ticket">Book Ticket</a></li>
+                    <li><a href="booking.html">Booking Form</a></li>
+                    <li><a href="#my-bookings">My Bookings</a></li>
+                    <li><a href="#guidelines">Guidelines</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
@@ -68,72 +79,68 @@
         <section id="matches">
             <h2>Match Schedule</h2>
 
-            <label for="team-filter">Filter by Team:</label>
+            <div class="match-controls">
+                <div class="team-filter">
+                    <label for="team-filter">Filter by Team:</label>
+                    <select id="team-filter">
+                        <option value="all">All Teams</option>
+                        <option value="rcb">Royal Challengers Bengaluru</option>
+                        <option value="mi">Mumbai Indians</option>
+                        <option value="csk">Chennai Super Kings</option>
+                        <option value="kkr">Kolkata Knight Riders</option>
+                        <option value="dc">Delhi Capitals</option>
+                        <option value="srh">Sunrisers Hyderabad</option>
+                    </select>
+                </div>
 
-            <select id="team-filter">
-                <option value="all">All Teams</option>
-                <option value="rcb">Royal Challengers Bengaluru</option>
-                <option value="mi">Mumbai Indians</option>
-                <option value="csk">Chennai Super Kings</option>
-                <option value="kkr">Kolkata Knight Riders</option>
-                <option value="dc">Delhi Capitals</option>
-                <option value="srh">Sunrisers Hyderabad</option>
-            </select>
+                <div class="view-toggle" role="group" aria-label="Match display style">
+                    <button id="grid-view" type="button" aria-pressed="true">Grid view</button>
+                    <button id="list-view" type="button" aria-pressed="false">List view</button>
+                </div>
+            </div>
 
-            <div class="table-container">
-                <table>
-                    <caption>Sample IPL 2026 Match Schedule and Ticket Prices</caption>
+            <div id="match-list" class="matches-grid">
+                <article class="match-card" data-teams="rcb mi">
+                    <div class="match-info">
+                        <h3>Match 01: RCB vs MI</h3>
+                        <p><strong>Date &amp; Time:</strong> April 5, 2026, 7:30 PM</p>
+                        <p><strong>Venue:</strong> Wankhede Stadium, Mumbai</p>
+                    </div>
+                    <div class="match-prices" aria-label="Ticket prices">
+                        <p><span>General</span><strong>Rs. 1500</strong></p>
+                        <p><span>Premium</span><strong>Rs. 3500</strong></p>
+                        <p><span>VIP</span><strong>Rs. 7500</strong></p>
+                    </div>
+                    <button class="book-btn" data-match="match-01">Book</button>
+                </article>
 
-                    <thead>
-                        <tr>
-                            <th>Match Number</th>
-                            <th>Teams</th>
-                            <th>Date &amp; Time</th>
-                            <th>Venue</th>
-                            <th>General</th>
-                            <th>Premium</th>
-                            <th>VIP</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
+                <article class="match-card" data-teams="csk kkr">
+                    <div class="match-info">
+                        <h3>Match 02: CSK vs KKR</h3>
+                        <p><strong>Date &amp; Time:</strong> April 6, 2026, 7:30 PM</p>
+                        <p><strong>Venue:</strong> Chidambaram Stadium, Chennai</p>
+                    </div>
+                    <div class="match-prices" aria-label="Ticket prices">
+                        <p><span>General</span><strong>Rs. 1200</strong></p>
+                        <p><span>Premium</span><strong>Rs. 3000</strong></p>
+                        <p><span>VIP</span><strong>Rs. 6500</strong></p>
+                    </div>
+                    <button class="book-btn" data-match="match-02">Book</button>
+                </article>
 
-                    <tbody id="match-list">
-
-                        <tr data-teams="rcb mi">
-                            <td>Match 01</td>
-                            <td>RCB vs MI</td>
-                            <td>April 5, 2026, 7:30 PM</td>
-                            <td>Wankhede Stadium, Mumbai</td>
-                            <td>Rs. 1500</td>
-                            <td>Rs. 3500</td>
-                            <td>Rs. 7500</td>
-                            <td><button class="book-btn" data-match="match-01">Book</button></td>
-                        </tr>
-
-                        <tr data-teams="csk kkr">
-                            <td>Match 02</td>
-                            <td>CSK vs KKR</td>
-                            <td>April 6, 2026, 7:30 PM</td>
-                            <td>Chidambaram Stadium, Chennai</td>
-                            <td>Rs. 1200</td>
-                            <td>Rs. 3000</td>
-                            <td>Rs. 6500</td>
-                            <td><button class="book-btn" data-match="match-02">Book</button></td>
-                        </tr>
-
-                        <tr data-teams="dc srh">
-                            <td>Match 03</td>
-                            <td>DC vs SRH</td>
-                            <td>April 7, 2026, 7:30 PM</td>
-                            <td>Arun Jaitley Stadium, Delhi</td>
-                            <td>Rs. 1000</td>
-                            <td>Rs. 2500</td>
-                            <td>Rs. 5500</td>
-                            <td><button class="book-btn" data-match="match-03">Book</button></td>
-                        </tr>
-
-                    </tbody>
-                </table>
+                <article class="match-card" data-teams="dc srh">
+                    <div class="match-info">
+                        <h3>Match 03: DC vs SRH</h3>
+                        <p><strong>Date &amp; Time:</strong> April 7, 2026, 7:30 PM</p>
+                        <p><strong>Venue:</strong> Arun Jaitley Stadium, Delhi</p>
+                    </div>
+                    <div class="match-prices" aria-label="Ticket prices">
+                        <p><span>General</span><strong>Rs. 1000</strong></p>
+                        <p><span>Premium</span><strong>Rs. 2500</strong></p>
+                        <p><span>VIP</span><strong>Rs. 5500</strong></p>
+                    </div>
+                    <button class="book-btn" data-match="match-03">Book</button>
+                </article>
             </div>
         </section>
 

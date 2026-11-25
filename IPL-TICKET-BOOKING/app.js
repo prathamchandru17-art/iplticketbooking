@@ -30,6 +30,12 @@ const summaryStand = document.getElementById("summary-stand");
 const summaryPrice = document.getElementById("summary-price");
 const summaryQuantity = document.getElementById("summary-quantity");
 const summaryTotal = document.getElementById("summary-total");
+const teamFilter = document.getElementById("team-filter");
+const matchList = document.getElementById("match-list");
+const gridViewButton = document.getElementById("grid-view");
+const listViewButton = document.getElementById("list-view");
+const navToggle = document.querySelector(".nav-toggle");
+const primaryNavigation = document.getElementById("primary-navigation");
 
 const ticketPrices = {
     "match-01": { general: 1500, premium: 3500, vip: 7500 },
@@ -38,8 +44,9 @@ const ticketPrices = {
 };
 
 if (!matchSelect || !standSelect || !quantityInput || !bookingForm || !bookingSection ||
-    !summaryMatch || !summaryStand || !summaryPrice || !summaryQuantity || !summaryTotal) {
-    console.error("The booking form or summary elements are missing.");
+    !summaryMatch || !summaryStand || !summaryPrice || !summaryQuantity || !summaryTotal ||
+    !teamFilter || !matchList || !gridViewButton || !listViewButton || !navToggle || !primaryNavigation) {
+    console.error("Required booking or responsive layout elements are missing.");
 } else {
     function updateBookingSummary(notify = false) {
         const selectedMatch = matchSelect.selectedOptions[0];
@@ -69,6 +76,40 @@ if (!matchSelect || !standSelect || !quantityInput || !bookingForm || !bookingSe
     bookingForm.addEventListener("submit", (event) => {
         event.preventDefault();
         showToast("Booking form submitted successfully!");
+    });
+
+    function filterMatches() {
+        const selectedTeam = teamFilter.value;
+
+        matchList.querySelectorAll(".match-card").forEach((card) => {
+            const teams = card.dataset.teams.split(/\s+/);
+            card.hidden = selectedTeam !== "all" && !teams.includes(selectedTeam);
+        });
+    }
+
+    function setMatchView(isGrid) {
+        matchList.classList.toggle("matches-grid", isGrid);
+        matchList.classList.toggle("matches-list", !isGrid);
+        gridViewButton.setAttribute("aria-pressed", String(isGrid));
+        listViewButton.setAttribute("aria-pressed", String(!isGrid));
+    }
+
+    teamFilter.addEventListener("change", filterMatches);
+    gridViewButton.addEventListener("click", () => setMatchView(true));
+    listViewButton.addEventListener("click", () => setMatchView(false));
+    setMatchView(true);
+
+    navToggle.addEventListener("click", () => {
+        const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
+        navToggle.setAttribute("aria-expanded", String(!isExpanded));
+        primaryNavigation.classList.toggle("is-open", !isExpanded);
+    });
+
+    primaryNavigation.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            navToggle.setAttribute("aria-expanded", "false");
+            primaryNavigation.classList.remove("is-open");
+        });
     });
 
     document.querySelectorAll(".book-btn").forEach((button) => {
