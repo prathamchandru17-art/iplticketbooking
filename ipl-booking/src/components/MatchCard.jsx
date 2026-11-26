@@ -7,6 +7,9 @@ function MatchCard({ match, isSelected, onSelect }) {
       </div>
       <p className="match-time">{match.date} &middot; {match.time}</p>
       <p className="match-venue">{match.venue}</p>
+      <p className="available-seats">
+        {match.available_seats.toLocaleString('en-IN')} seats available
+      </p>
 
       <dl className="price-list">
         {Object.entries(match.prices).map(([category, price]) => (
@@ -20,10 +23,11 @@ function MatchCard({ match, isSelected, onSelect }) {
       <button
         className="button match-select"
         type="button"
+        disabled={match.available_seats === 0}
         aria-pressed={isSelected}
         onClick={() => onSelect(match)}
       >
-        {isSelected ? 'Selected' : 'Select match'}
+        {match.available_seats === 0 ? 'Sold out' : isSelected ? 'Selected' : 'Select match'}
       </button>
     </article>
   )

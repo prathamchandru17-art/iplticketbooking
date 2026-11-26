@@ -184,6 +184,13 @@
   font-size: 0.92rem;
 }
 
+.available-seats {
+  margin: 0;
+  color: #397343;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
 .price-list {
   width: 100%;
   margin: 20px 0;
@@ -222,6 +229,11 @@
   background: #8d0b25;
 }
 
+.match-select:disabled {
+  background: #777;
+  cursor: not-allowed;
+}
+
 .match-card.is-selected .match-select {
   background: #242025;
 }
@@ -238,6 +250,65 @@
 .selection-panel p:not(.eyebrow) {
   margin: 5px 0;
   color: #5e555e;
+}
+
+.booking-form {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 16px;
+}
+
+.booking-form label {
+  display: grid;
+  gap: 6px;
+  color: #3b333b;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.booking-form input,
+.booking-form select {
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid #cfc7c9;
+  border-radius: 6px;
+  background: white;
+  color: #241e25;
+  font: inherit;
+}
+
+.booking-form .booking-total {
+  align-self: center;
+  margin: 0;
+  font-weight: 800;
+}
+
+.booking-form button {
+  width: 100%;
+}
+
+.booking-form button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.status-message,
+.success-message {
+  padding: 12px 14px;
+  border-radius: 6px;
+  background: #fffaf0;
+  color: #5e555e;
+}
+
+.error-message {
+  background: #fff0f0;
+  color: #8d0b25;
+}
+
+.success-message {
+  background: #edf8ef;
+  color: #286334;
 }
 
 .selection-panel h2 {
